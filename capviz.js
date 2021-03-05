@@ -35,32 +35,45 @@ looker.plugins.visualizations.add({
     // Set up the initial state of the visualization
     create: function (element, config) {
 
-        var gMapsScript = document.createElement('script');
-        gMapsScript.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyC6Mf10FdDbt4vhwLQAh7r1Ia56i1fu2g8&callback=initMap&libraries=&v=weekly";
-        gMapsScript.defer = true;
+        // Define the initMap function
+        var initMapScriptEl = document.createElement('script');
+        initMapScriptEl.textContent = `
+            function initMap() {
+                map = new google.maps.Map(container, {
+                    center: { lat: -34.397, lng: 150.644 },
+                    zoom: 8,
+                });
+            }
+        `;
+        document.head.appendChild(initMapScriptEl);
+        
+        // Define the sideload of google maps js library
+        var gMapsScriptEl = document.createElement('script');
+        gMapsScriptEl.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyC6Mf10FdDbt4vhwLQAh7r1Ia56i1fu2g8&callback=initMap&libraries=&v=weekly";
+        gMapsScriptEl.defer = true;
         console.log('before append script');
         
-        if (document.getElementsByTagName('head').length == 0) {
-            console.log('NO HEAD');
-            var head = document.createElement('head');
-            document.getElementsByTagName('html')[0].appendChild(head);
-        }
-        document.getElementsByTagName('head')[0].appendChild(gMapsScript);
+//         if (document.getElementsByTagName('head').length == 0) {
+//             console.log('NO HEAD');
+//             var head = document.createElement('head');
+//             document.getElementsByTagName('html')[0].appendChild(head);
+//         }
+        
+//         document.getElementsByTagName('head')[0].appendChild(gMapsScript);
+        
+        document.head.appendChild(gMapsScriptEl);
+        
+        
         console.log('after append script');
+        
+        console.log(document.head);
 
 
         // Create a container element to display data
         var container = element.appendChild(document.createElement("div"));
         container.setAttribute('id','map');
         container.setAttribute("style","width:100%;height:100%");
-
-        function initMap() {
-            map = new google.maps.Map(container, {
-                center: { lat: -34.397, lng: 150.644 },
-                zoom: 8,
-            });
-        }
-        
+ 
         
     },
     // Render in response to the data or settings changing
