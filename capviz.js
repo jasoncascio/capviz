@@ -38,6 +38,10 @@ looker.plugins.visualizations.add({
         // Define the initMap function
         var initMapScriptEl = document.createElement('script');
         initMapScriptEl.textContent = `
+            // Create a container element to display data
+            var container = element.appendChild(document.createElement("div"));
+            container.setAttribute('id','map');
+            container.setAttribute("style","width:100%;height:100%");
             function initMap() {
                 map = new google.maps.Map(container, {
                     center: { lat: -34.397, lng: 150.644 },
@@ -67,12 +71,6 @@ looker.plugins.visualizations.add({
         console.log('after append script');
         
         console.log(document.head);
-
-
-        // Create a container element to display data
-        var container = element.appendChild(document.createElement("div"));
-        container.setAttribute('id','map');
-        container.setAttribute("style","width:100%;height:100%");
  
         
     },
