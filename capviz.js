@@ -34,7 +34,7 @@ looker.plugins.visualizations.add({
     
     // Set up the initial state of the visualization
     create: function (element, config) {
-        console.log('yams');
+        console.log('yams1');
         // Create a container element to display data
         var container = element.appendChild(document.createElement("div"));
         container.setAttribute('id','map');
