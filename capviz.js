@@ -42,7 +42,16 @@ looker.plugins.visualizations.add({
         // Create a container element to display data
         var container = element.appendChild(document.createElement("div"));
         container.setAttribute('id','map');
-        console.log(element);
+        container.setAttribute("style","width:100%;height:100%");
+
+        function initMap() {
+            map = new google.maps.Map(container, {
+                center: { lat: -34.397, lng: 150.644 },
+                zoom: 8,
+            });
+        }
+        
+        
     },
     // Render in response to the data or settings changing
     updateAsync: function (data, element, config, queryResponse, details, done) {
