@@ -34,8 +34,11 @@ looker.plugins.visualizations.add({
     
     // Set up the initial state of the visualization
     create: function (element, config) {
-        console.log('yams1');
-        console.log(document);
+
+        var gMapsScript = document.createElement('script');
+        gMapsScript.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyC6Mf10FdDbt4vhwLQAh7r1Ia56i1fu2g8&callback=initMap&libraries=&v=weekly";
+        gMapsScript.defer = true;
+
         // Create a container element to display data
         var container = element.appendChild(document.createElement("div"));
         container.setAttribute('id','map');
