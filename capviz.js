@@ -39,6 +39,11 @@ looker.plugins.visualizations.add({
         gMapsScript.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyC6Mf10FdDbt4vhwLQAh7r1Ia56i1fu2g8&callback=initMap&libraries=&v=weekly";
         gMapsScript.defer = true;
         console.log('before append script');
+        
+        if (document.getElementsByTagName('head').length == 0) {
+            var head = document.createElement('head');
+            document.getElementsByTagName('html')[0].appendChild(head);
+        }
         document.getElementsByTagName('head')[0].appendChild(gMapsScript);
         console.log('after append script');
 
