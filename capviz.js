@@ -41,6 +41,7 @@ looker.plugins.visualizations.add({
         console.log('before append script');
         
         if (document.getElementsByTagName('head').length == 0) {
+            console.log('NO HEAD');
             var head = document.createElement('head');
             document.getElementsByTagName('html')[0].appendChild(head);
         }
