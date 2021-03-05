@@ -38,7 +38,10 @@ looker.plugins.visualizations.add({
         var gMapsScript = document.createElement('script');
         gMapsScript.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyC6Mf10FdDbt4vhwLQAh7r1Ia56i1fu2g8&callback=initMap&libraries=&v=weekly";
         gMapsScript.defer = true;
-        document.appendChild(gMapsScript)
+        console.log('before append script');
+        document.getElementsByTagName('head')[0].appendChild(gMapsScript);
+        console.log('after append script');
+
 
         // Create a container element to display data
         var container = element.appendChild(document.createElement("div"));
