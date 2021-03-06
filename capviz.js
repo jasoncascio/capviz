@@ -44,7 +44,7 @@ looker.plugins.visualizations.add({
         // Define the initMap function
         var initMapScriptEl = document.createElement('script');
         initMapScriptEl.textContent = `
-            var container = document.body.appendChild(document.createElement("div"));
+            var container = document.createElement("div");
             container.setAttribute('id','map');
             container.setAttribute("style","width:100%;height:100%");
             function initMap() {
@@ -55,6 +55,8 @@ looker.plugins.visualizations.add({
             }
         `;
         document.head.appendChild(initMapScriptEl);
+        
+        element.appendChild(container);
         
         // Define the sideload of google maps js library
         var gMapsScriptEl = document.createElement('script');
