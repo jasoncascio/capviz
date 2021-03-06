@@ -36,14 +36,17 @@ looker.plugins.visualizations.add({
     create: function (element, config) {
 
         // Create a container element to display data
-        var container = element.appendChild(document.createElement("div"));
-        container.setAttribute('id','map');
-        container.setAttribute("style","width:100%;height:100%");
+//         var container = element.appendChild(document.createElement("div"));
+//         container.setAttribute('id','map');
+//         container.setAttribute("style","width:100%;height:100%");
         
         
         // Define the initMap function
         var initMapScriptEl = document.createElement('script');
         initMapScriptEl.textContent = `
+            var container = document.body.appendChild(document.createElement("div"));
+            container.setAttribute('id','map');
+            container.setAttribute("style","width:100%;height:100%");
             function initMap() {
                 map = new google.maps.Map(container, {
                     center: { lat: -34.397, lng: 150.644 },
