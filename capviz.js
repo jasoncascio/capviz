@@ -35,8 +35,11 @@ looker.plugins.visualizations.add({
     // Set up the initial state of the visualization
     create: function (element, config) {
 
+        // iFrame document
+        var iframeDocument = element.ownerDocument;
+        
         // Create a container element to display data
-        var container = element.appendChild(document.createElement("div"));
+        var container = element.appendChild(iframeDocument.createElement("div"));
         container.setAttribute('id','map');
         container.setAttribute("style","width:100%;height:100%");
         element.appendChild(container);
@@ -44,25 +47,25 @@ looker.plugins.visualizations.add({
         console.log('container');
         console.log(container);
         console.log('select map element');
-        console.log(document.getElementById('map'));
+        console.log(iframeDocument.getElementById('map'));
         console.log('now sideload');
         
         
         // Define the initMap function
-        var initMapScriptEl = document.createElement('script');
+        var initMapScriptEl = iframeDocument.createElement('script');
         initMapScriptEl.textContent = `
             function initMap() {
-                map = new google.maps.Map(document.getElementById('map'), {
+                map = new google.maps.Map(iframeDocument.getElementById('map'), {
                     center: { lat: -34.397, lng: 150.644 },
                     zoom: 8,
                 });
             }
         `;
-        document.head.appendChild(initMapScriptEl);
+        iframeDocument.head.appendChild(initMapScriptEl);
         
         
         // Define the sideload of google maps js library
-        var gMapsScriptEl = document.createElement('script');
+        var gMapsScriptEl = iframeDocument.createElement('script');
         gMapsScriptEl.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyC6Mf10FdDbt4vhwLQAh7r1Ia56i1fu2g8&callback=initMap&libraries=&v=weekly";
         gMapsScriptEl.defer = true;
         console.log('before append script');
@@ -75,12 +78,12 @@ looker.plugins.visualizations.add({
         
 //         document.getElementsByTagName('head')[0].appendChild(gMapsScript);
         
-        document.head.appendChild(gMapsScriptEl);
+        iframeDocument.head.appendChild(gMapsScriptEl);
         
         
         console.log('after append script');
         
-        console.log(document.head);
+        console.log(iframeDocument.head);
  
         
     },
