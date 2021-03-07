@@ -35,6 +35,9 @@ looker.plugins.visualizations.add({
     // Set up the initial state of the visualization
     create: function (element, config) {
 
+        // Define map
+        var map;
+        
         // iFrame document
         var iframeDocument = element.ownerDocument;
         
