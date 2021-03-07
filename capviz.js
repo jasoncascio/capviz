@@ -55,12 +55,25 @@ looker.plugins.visualizations.add({
         var initMapScriptEl = iframeDocument.createElement('script');
         initMapScriptEl.textContent = `
             function initMap() {
+                console.log('dump element from side load');
+                console.log(element);
+                console.log('was dumped');
+                console.log('dump document from side load');
+                console.log(document);
+                console.log('was dumped');
+                console.log('dump iframeDocument from side load');
+                console.log(iframeDocument);
+                console.log('was dumped');
+
                 map = new google.maps.Map(iframeDocument.getElementById('map'), {
                     center: { lat: -34.397, lng: 150.644 },
                     zoom: 8,
                 });
             }
         `;
+        console.log('dump document appending sideload to');
+        console.log(document)
+        console.log('dumped');
         iframeDocument.head.appendChild(initMapScriptEl);
         
         
