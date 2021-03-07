@@ -55,15 +55,11 @@ looker.plugins.visualizations.add({
         var initMapScriptEl = iframeDocument.createElement('script');
         initMapScriptEl.textContent = `
             function initMap() {
-//                 console.log('dump element from side load');
-//                 console.log(element);
-//                 console.log('was dumped');
-                console.log('dump document from side load');
+                console.log('dump document');
                 console.log(document);
-//                 console.log('was dumped');
-//                 console.log('dump iframeDocument from side load');
-//                 console.log(iframeDocument);
-//                 console.log('was dumped');
+                console.log('was dumped');
+                console.log('attempt to get map div');
+                console.log(document.getElementById('map'));
 
                 map = new google.maps.Map(document.getElementById('map'), {
                     center: { lat: -34.397, lng: 150.644 },
@@ -87,9 +83,9 @@ looker.plugins.visualizations.add({
         gMapsScriptEl.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyC6Mf10FdDbt4vhwLQAh7r1Ia56i1fu2g8&callback=initMap&libraries=&v=weekly";
         gMapsScriptEl.defer = true;
         
-        console.log('before append script');
+        console.log('before append google maps script');
         iframeDocument.head.appendChild(gMapsScriptEl);
-        console.log('after append script');
+        console.log('after append google maps script');
         
         console.log(iframeDocument.head);
  
