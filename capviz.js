@@ -36,19 +36,23 @@ looker.plugins.visualizations.add({
     create: function (element, config) {
 
         // Create a container element to display data
-//         var container = element.appendChild(document.createElement("div"));
-//         container.setAttribute('id','map');
-//         container.setAttribute("style","width:100%;height:100%");
+        var container = element.appendChild(document.createElement("div"));
+        container.setAttribute('id','map');
+        container.setAttribute("style","width:100%;height:100%");
+        element.appendChild(container);
+        
+        console.log('container');
+        console.log(container);
+        console.log('select map element');
+        console.log(document.getElementById('map'));
+        console.log('now sideload');
         
         
         // Define the initMap function
         var initMapScriptEl = document.createElement('script');
         initMapScriptEl.textContent = `
-            var container = document.createElement("div");
-            container.setAttribute('id','map');
-            container.setAttribute("style","width:100%;height:100%");
             function initMap() {
-                map = new google.maps.Map(container, {
+                map = new google.maps.Map(document.getElementById('map'), {
                     center: { lat: -34.397, lng: 150.644 },
                     zoom: 8,
                 });
@@ -56,7 +60,6 @@ looker.plugins.visualizations.add({
         `;
         document.head.appendChild(initMapScriptEl);
         
-        element.appendChild(container);
         
         // Define the sideload of google maps js library
         var gMapsScriptEl = document.createElement('script');
