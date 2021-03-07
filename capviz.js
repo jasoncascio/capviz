@@ -48,16 +48,15 @@ looker.plugins.visualizations.add({
         console.log(container);
         console.log('select map element');
         console.log(iframeDocument.getElementById('map'));
-        console.log('now sideload');
         
         
         // Define the initMap function
         var initMapScriptEl = iframeDocument.createElement('script');
         initMapScriptEl.textContent = `
             function initMap() {
-                console.log('dump document');
+                console.log('dump document from initMap');
                 console.log(document);
-                console.log('was dumped');
+                console.log('document was dumped from initMap');
                 console.log('attempt to get map div');
                 console.log(document.getElementById('map'));
 
@@ -67,7 +66,7 @@ looker.plugins.visualizations.add({
                 });
             }
         `;
-        console.log('dump document appending sideload to');
+        console.log('dump document to see what it is - before adding initMap');
         console.log(document)
         console.log('dumped');
         
@@ -83,7 +82,7 @@ looker.plugins.visualizations.add({
         gMapsScriptEl.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyC6Mf10FdDbt4vhwLQAh7r1Ia56i1fu2g8&callback=initMap&libraries=&v=weekly";
         gMapsScriptEl.defer = true;
         
-        console.log('before append google maps script');
+        console.log('before append sideload google maps script');
         iframeDocument.head.appendChild(gMapsScriptEl);
         console.log('after append google maps script');
         
