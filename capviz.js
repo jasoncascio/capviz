@@ -55,17 +55,17 @@ looker.plugins.visualizations.add({
         var initMapScriptEl = iframeDocument.createElement('script');
         initMapScriptEl.textContent = `
             function initMap() {
-                console.log('dump element from side load');
-                console.log(element);
-                console.log('was dumped');
+//                 console.log('dump element from side load');
+//                 console.log(element);
+//                 console.log('was dumped');
                 console.log('dump document from side load');
                 console.log(document);
-                console.log('was dumped');
-                console.log('dump iframeDocument from side load');
-                console.log(iframeDocument);
-                console.log('was dumped');
+//                 console.log('was dumped');
+//                 console.log('dump iframeDocument from side load');
+//                 console.log(iframeDocument);
+//                 console.log('was dumped');
 
-                map = new google.maps.Map(iframeDocument.getElementById('map'), {
+                map = new google.maps.Map(document.getElementById('map'), {
                     center: { lat: -34.397, lng: 150.644 },
                     zoom: 8,
                 });
@@ -74,26 +74,21 @@ looker.plugins.visualizations.add({
         console.log('dump document appending sideload to');
         console.log(document)
         console.log('dumped');
+        
+        console.log('adding initMap');
         iframeDocument.head.appendChild(initMapScriptEl);
+        console.log('initMap added');
+        console.log(initMap);
+
         
         
         // Define the sideload of google maps js library
         var gMapsScriptEl = iframeDocument.createElement('script');
         gMapsScriptEl.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyC6Mf10FdDbt4vhwLQAh7r1Ia56i1fu2g8&callback=initMap&libraries=&v=weekly";
         gMapsScriptEl.defer = true;
+        
         console.log('before append script');
-        
-//         if (document.getElementsByTagName('head').length == 0) {
-//             console.log('NO HEAD');
-//             var head = document.createElement('head');
-//             document.getElementsByTagName('html')[0].appendChild(head);
-//         }
-        
-//         document.getElementsByTagName('head')[0].appendChild(gMapsScript);
-        
         iframeDocument.head.appendChild(gMapsScriptEl);
-        
-        
         console.log('after append script');
         
         console.log(iframeDocument.head);
