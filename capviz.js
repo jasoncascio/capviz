@@ -66,7 +66,7 @@ looker.plugins.visualizations.add({
 //                 console.log(document.getElementById('map'));
 
 // Seems to have a problem here
-                map = new google.maps.Map(document.getElementById('map'), {
+                map = new google.maps.Map(iframeDocument.getElementById('map'), {
                     center: { lat: -34.397, lng: 150.644 },
                     zoom: 8,
                 });
