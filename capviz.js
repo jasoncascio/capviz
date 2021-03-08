@@ -35,6 +35,12 @@ looker.plugins.visualizations.add({
     // Set up the initial state of the visualization
     create: function (element, config) {
 
+        // Create a container element to display data
+        var container = element.appendChild(iframeDocument.createElement("div"));
+        container.setAttribute('id','map');
+        container.setAttribute("style","width:100%;height:100%");
+        element.appendChild(container);
+        
         // iFrame document
         var iframeDocument = element.ownerDocument;
         
@@ -45,12 +51,6 @@ looker.plugins.visualizations.add({
                 });;
         
 
-        
-        // Create a container element to display data
-        var container = element.appendChild(iframeDocument.createElement("div"));
-        container.setAttribute('id','map');
-        container.setAttribute("style","width:100%;height:100%");
-        element.appendChild(container);
         
 //         console.log('container');
 //         console.log(container);
