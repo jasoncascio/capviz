@@ -119,7 +119,7 @@ looker.plugins.visualizations.add({
         console.log(config.show_details);
         console.log(config.show_config);
         console.log(stuffToShow);
-        document.getElementById('container').innerHTML = JSON.stringify(stuffToShow,null,2);
+//         document.getElementById('container').innerHTML = JSON.stringify(stuffToShow,null,2);
 
 
         // Throw some errors and exit if the shape of the data isn't what this chart needs
