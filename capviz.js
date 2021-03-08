@@ -47,36 +47,43 @@ looker.plugins.visualizations.add({
         container.setAttribute("style","width:100%;height:100%");
         element.appendChild(container);
         
-        console.log('container');
-        console.log(container);
-        console.log('select map element');
-        console.log(iframeDocument.getElementById('map'));
+//         console.log('container');
+//         console.log(container);
+//         console.log('select map element');
+//         console.log(iframeDocument.getElementById('map'));
         
         
         // Define the initMap function
         var initMapScriptEl = iframeDocument.createElement('script');
         initMapScriptEl.textContent = `
             function initMap() {
-                console.log('dump document from initMap');
-                console.log(document);
-                console.log('document was dumped from initMap');
-                console.log('attempt to get map div');
-                console.log(document.getElementById('map'));
 
+// These work
+//                 console.log('dump document from initMap');
+//                 console.log(document);
+//                 console.log('document was dumped from initMap');
+//                 console.log('attempt to get map div');
+//                 console.log(document.getElementById('map'));
+
+// Seems to have a problem here
                 map = new google.maps.Map(document.getElementById('map'), {
                     center: { lat: -34.397, lng: 150.644 },
                     zoom: 8,
                 });
             }
         `;
-        console.log('dump document to see what it is - before adding initMap');
-        console.log(document)
-        console.log('dumped');
         
-        console.log('adding initMap');
+// These work
+//         console.log('dump document to see what it is - before adding initMap');
+//         console.log(document)
+//         console.log('dumped');      
+//         console.log('adding initMap');
+        
         iframeDocument.head.appendChild(initMapScriptEl);
-        console.log('initMap added');
-        console.log(initMap);
+        
+// These work
+//         console.log('initMap added');
+//         console.log(initMap);
 
         
         
@@ -85,11 +92,11 @@ looker.plugins.visualizations.add({
         gMapsScriptEl.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyC6Mf10FdDbt4vhwLQAh7r1Ia56i1fu2g8&callback=initMap&libraries=&v=weekly";
         gMapsScriptEl.defer = true;
         
-        console.log('before append sideload google maps script');
+//         console.log('before append sideload google maps script'); // works
         iframeDocument.head.appendChild(gMapsScriptEl);
-        console.log('after append google maps script');
+//         console.log('after append google maps script'); // works
         
-        console.log(iframeDocument.head);
+//         console.log(iframeDocument.head); // works
  
         
     },
