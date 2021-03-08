@@ -36,7 +36,10 @@ looker.plugins.visualizations.add({
     create: function (element, config) {
 
         // Define map
-        var map;
+        var map = new google.maps.Map(iframeDocument.getElementById('map'), {
+                    center: { lat: -34.397, lng: 150.644 },
+                    zoom: 8,
+                });;
         
         // iFrame document
         var iframeDocument = element.ownerDocument;
