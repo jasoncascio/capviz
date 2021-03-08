@@ -89,7 +89,7 @@ looker.plugins.visualizations.add({
         
         // Define the sideload of google maps js library
         var gMapsScriptEl = iframeDocument.createElement('script');
-        gMapsScriptEl.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyC6Mf10FdDbt4vhwLQAh7r1Ia56i1fu2g8&callback=initMap&libraries=&v=weekly";
+        gMapsScriptEl.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyC6Mf10FdDbt4vhwLQAh7r1Ia56i1fu2g8&callback=initMap&libraries=&v=weekly";
         gMapsScriptEl.defer = true;
         
 //         console.log('before append sideload google maps script'); // works
