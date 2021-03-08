@@ -35,14 +35,14 @@ looker.plugins.visualizations.add({
     // Set up the initial state of the visualization
     create: function (element, config) {
 
+        // iFrame document
+        var iframeDocument = element.ownerDocument;
+        
         // Create a container element to display data
         var container = element.appendChild(iframeDocument.createElement("div"));
         container.setAttribute('id','map');
         container.setAttribute("style","width:100%;height:100%");
         element.appendChild(container);
-        
-        // iFrame document
-        var iframeDocument = element.ownerDocument;
         
         // Define map
         var map = new google.maps.Map(iframeDocument.getElementById('map'), {
